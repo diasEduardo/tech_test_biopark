@@ -22,6 +22,7 @@ A aplicação deve permitir:
 ###### Suposições
 1. Os dados de contato, tipo e status são gerenciados esternamente a essa funcionalidade.
 2. A mensagem é salva como texto
+3. Por questóes de simplicidade os numeros aceitos consideram apenas o padrão de celular no brasil
 
 Com base nisso foi desenvolvido o esquema para o banco de dados, que pode sem encontrado na pasta 
 [documentation](/documentation).
