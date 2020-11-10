@@ -8,6 +8,7 @@ def test_db():
 	assert db.exec("SELECT id FROM send_status LIMIT 1") != None
 	assert db.exec("SELECT id FROM send_schedule LIMIT 1") != None
 	assert db.exec("SELECT id FROM receiver LIMIT 1") != None
+	assert db.exec("SELECT id, date_time FROM send_schedule LIMIT 1") != None
 
 test_db();
 print("test_db pass")
