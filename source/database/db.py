@@ -12,7 +12,7 @@ def dt_parser(dt):
     if isinstance(dt, datetime):
         return dt.isoformat()
 
-def exec(query):
+def select(query):
 	conn = None
 	query_response = None
 	try:
@@ -31,7 +31,7 @@ def exec(query):
 			conn.close()
 	return query_response
 
-def delete(query):
+def exec(query):
 	conn = None
 	query_response = None
 	try:
@@ -54,5 +54,5 @@ def delete(query):
 if __name__ == '__main__':
 	query = "DELETE FROM send_schedule "\
 			"WHERE id = 7" 
-	response = delete(query)
+	#response = delete(query)
 	print(response)
