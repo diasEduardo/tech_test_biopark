@@ -1,7 +1,9 @@
-import psycopg2
 import sys
 sys.path.append('../utils')
+import psycopg2
+from psycopg2.extras import RealDictCursor
 from config_parser import config
+import json
 
 params = config("C:\\Users\\Eduardo\\Documents\\git_projects\\tech_test_biopark\\source\\database\\db.ini","postgresql")
 
@@ -12,10 +14,10 @@ def exec(query):
 		
 		conn = psycopg2.connect(**params)
 		
-		cur = conn.cursor()
+		cur = conn.cursor(cursor_factory=RealDictCursor)
 		cur.execute(query)
 		
-		query_response = cur.fetchall()
+		query_response = json.dumps(cur.fetchall(), indent=2)
 		cur.close()
 	except (Exception, psycopg2.DatabaseError) as error:
 		print(error)
@@ -26,5 +28,5 @@ def exec(query):
 
 
 if __name__ == '__main__':
-    response = exec("SELECT version()")
+    response = exec("SELECT * FROM send_type LIMIT 5")
     print(response)
