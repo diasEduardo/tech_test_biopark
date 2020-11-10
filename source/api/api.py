@@ -12,11 +12,17 @@ def list_all_schedule():
 			"JOIN send_status AS st ON s.status_id = st.id "\
 			"JOIN send_type AS t ON s.type_id = t.id "\
 			"JOIN receiver AS r ON s.receiver_id = r.id "
-	print(query);
 	response = db.exec(query);
-	print(response);
 	return response
 
+@app.route('/api/agendamentos/<delete_id>',methods=['DELETE'])
+def delete_schedule(delete_id):
+	query = "DELETE FROM send_schedule "\
+			"WHERE id = " + str(delete_id)
+	print(query)
+	response = db.exec(query)
+	print(response)
+	return response
 
 
 
