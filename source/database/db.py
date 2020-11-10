@@ -3,13 +3,13 @@ import sys
 sys.path.append('../utils')
 from config_parser import config
 
-
+params = config("C:\\Users\\Eduardo\\Documents\\git_projects\\tech_test_biopark\\source\\database\\db.ini","postgresql")
 
 def exec(query):
 	conn = None
 	query_response = None
 	try:
-		params = config("db.ini","postgresql")
+		
 		conn = psycopg2.connect(**params)
 		
 		cur = conn.cursor()
@@ -26,5 +26,5 @@ def exec(query):
 
 
 if __name__ == '__main__':
-    response = exec("SELECT * from send_type")
+    response = exec("SELECT version()")
     print(response)
