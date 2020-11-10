@@ -15,7 +15,7 @@ def test_db():
 	id = 15
 	#delete
 	delete = db.exec("DELETE FROM send_schedule where id = "+str(id))
-	assert delete == 0 || delete == 1
+	assert delete == 0 or delete == 1
 
 test_db();
 print("test_db pass")
