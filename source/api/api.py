@@ -75,5 +75,5 @@ def delete_schedule(delete_id):
 	return output, code
 
 
-
-app.run()
+if __name__ == '__main__':
+	app.run()
