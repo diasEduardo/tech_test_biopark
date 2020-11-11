@@ -45,14 +45,13 @@ def insert_schedule():
 	elif(date is None):
 		erro_flag = True
 	elif(message is None):
-		message = ""
+		erro_flag = True
 	
 		
 	if( not erro_flag):
 		output = "erro ao inserir, transação não obteve sucesso"
 		query = "INSERT INTO send_schedule(status_id,type_id,receiver_id,date_time,message) "\
 			"values(%d, %d, %d, '%s', '%s')"%(status, int(type1), int(receiver), date, message)
-		print(query)
 		response = db.exec(query);
 		if(response):
 			output = "inserido com sucesso"
