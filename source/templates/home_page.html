@@ -9,41 +9,109 @@
 
 	<title>Agendamento de envio</title>
 
+	<style>
+	#left_side {
+	  border-right: 6px solid black;
+	  height: 100%;
+	  display: inline-block;
+	  position:fixed;
+	  left:10px;
+	  top:10px;
+	}
+
+	#right_side {
+	  height: 100%;
+	  position: relative;
+	  width: 75%;
+	  
+	}
+
+	.left_pad{
+		left:250px;
+		position: relative;
+	}
+	
+	.inline {
+		display: inline-block;
+	}
+
+	ul {
+	  list-style-type: none; /* Remove bullets */
+	  padding: 0; /* Remove padding */
+	  margin: 0; /* Remove margins */
+	  position: relative;
+
+	  
+	}
+
+	ul li {
+	  border: 1px solid #ddd; /* Add a thin border to each list item */
+	  margin-top: -1px; /* Prevent double borders */
+	  background-color: #f6f6f6; /* Add a grey background color */
+	  padding: 12px; /* Add some padding */
+	  display: inline-block;
+	}
+	</style>
 </head>
 
 <body>
-  
-	<div id='insert_form'>
-		<h2>Novo Agendamento</h2>
-	<form action="/" method="post">
+  	
+  	
+	<div id="right_side">
+		<h2 class='left_pad'>Agendamentos</h2>
+		<div class='left_pad' id="insert_message">
+			<p>{{delete_msg}}</p>
+		</div>
+		<div  id='list'>
+			<ul class='left_pad'>
+			{% for schedule in send_schedule %}
+			  <li><div>
+			  	<p class='inline'>{{schedule['name']}}, {{schedule['type']}}</p>
+			  	 <button class='inline' type="button">delete</button> 
+			  	<p >{{schedule['date_time']}}</p>
+			  	<p>{{schedule['message']}}</p>
+			  </div></li>
+			{% endfor %}
+			</ul>
+	
 
-		<label for="lreceiver">destinatario</label><br />
-		<select id="lreceiver" name="lreceiver"><br />
-			<option value="None"></option>
-			{% for receiver in receivers %}
-			<option value="{{receiver['id']}}">{{receiver['name']}}</option>
-		    {% endfor %}
-		</select> <br />
-		<label for="ltype">tipo de envio</label><br />
-		<select id="ltype" name="ltype"><br />
-			<option value="None"></option>
-			{% for type in types %}
-			<option value="{{type['id']}}">{{type['type']}}</option>
-		    {% endfor %}
-			
-		</select> <br />
-		<label for="ldate">Data</label><br />
-		<input type="date" id="ldate" name="ldate"><br />
-		<label for="ltime">Hora</label><br />
-		<input id="ltime" type="time" step="1" /><br />
-		<label for="lmessage">Mensagem</label><br />
-		<textarea id="lmessage" name="lmessage" rows="10" cols="25"></textarea><br /><br />
-		<input type="submit" value="Agendar">
-	</form>
-
+		</div>
+		
 	</div>
+	<div id="left_side">
+		<div id='insert_form'>
+			<h2>Novo Agendamento</h2>
+		<form action="/" method="post">
 
+			<label for="lreceiver">destinatario</label><br />
+			<select id="lreceiver" name="lreceiver"><br />
+				<option value="None"></option>
+				{% for receiver in receivers %}
+				<option value="{{receiver['id']}}">{{receiver['name']}}</option>
+			    {% endfor %}
+			</select> <br />
+			<label for="ltype">tipo de envio</label><br />
+			<select id="ltype" name="ltype"><br />
+				<option value="None"></option>
+				{% for type in types %}
+				<option value="{{type['id']}}">{{type['type']}}</option>
+			    {% endfor %}
+				
+			</select> <br />
+			<label for="ldate">Data</label><br />
+			<input type="date" id="ldate" name="ldate"><br />
+			<label for="ltime">Hora</label><br />
+			<input id="ltime" type="time" step="1" /><br />
+			<label for="lmessage">Mensagem</label><br />
+			<textarea id="lmessage" name="lmessage" rows="10" cols="25"></textarea><br /><br />
+			<input type="submit" value="Agendar">
+		</form>
 
+		</div>
+		<div id="insert_message">
+			<p>{{insert_msg}}</p>
+		</div>
+	</div>
 
 
 
