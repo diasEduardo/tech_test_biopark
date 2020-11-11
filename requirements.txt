@@ -43,7 +43,6 @@ pytest==6.1.2
 python-dotenv==0.12.0
 python-telegram-bot==12.8
 PyTweening==1.0.3
-pywin32==227
 requests==2.23.0
 six==1.14.0
 toml==0.10.2
