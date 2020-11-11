@@ -16,8 +16,22 @@ def home_page():
 	insert_msg = ""
 	delete_msg = ""
 	if request.method == 'POST':
-		insert_msg = "entrou no post"
-		#todo
+		print(request.form);
+		type1 = request.form.get('ltype')
+		receiver = request.form.get('lreceiver')
+		date = request.form.get('ldate')
+		time = request.form.get('ltime')
+		message = request.form.get('lmessage')
+		link = request.base_url  + '/api/agendamentos?'
+		link += "type_id="+str(type1)
+		link += "&receiver_id="+str(receiver)
+		link += "&date_time="+str(date)+" "+str(time)
+		link += "&message="+str(message)
+		insert_msg = requests.post(link).text
+		print(type1,receiver,date,time,message);
+		print(link);
+	elif request.method == 'DELETE':
+		
 	types = json.loads(db.select("SELECT id, type from send_type"))
 	receivers = json.loads(db.select("SELECT id, name from receiver"))
 	send_schedule = json.loads(requests.get(request.base_url  + '/api/agendamentos').text)
