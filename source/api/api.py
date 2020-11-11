@@ -29,13 +29,13 @@ def select_schedule(select_id):
 
 @app.route('/api/agendamentos',methods=['POST'])
 def insert_schedule():
-	output = "erro ao inserir"
+	output = "erro ao inserir, valores incorretos"
 	code = 400
 	erro_flag = False
 
 	status  = 1
-	type1 = int(request.args.get('type_id'))
-	receiver = int(request.args.get('receiver_id'))
+	type1 = request.args.get('type_id')
+	receiver = request.args.get('receiver_id')
 	date = request.args.get('date_time')
 	message = request.args.get('message')
 	if(type1 is None):
@@ -47,10 +47,12 @@ def insert_schedule():
 	elif(message is None):
 		message = ""
 	
-
+		
 	if( not erro_flag):
+		output = "erro ao inserir, transação não obteve sucesso"
 		query = "INSERT INTO send_schedule(status_id,type_id,receiver_id,date_time,message) "\
-			"values(%d, %d, %d, '%s', '%s')"%(status, type1, receiver, date, message)
+			"values(%d, %d, %d, '%s', '%s')"%(status, int(type1), int(receiver), date, message)
+		print(query)
 		response = db.exec(query);
 		if(response):
 			output = "inserido com sucesso"
