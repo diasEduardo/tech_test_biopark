@@ -1,12 +1,15 @@
 from flask import Flask
 from flask import request
+from flask import Blueprint
 import sys
 sys.path.append('../database')
+sys.path.append('database')
+sys.path.append('..')
 import db
 
-app = Flask(__name__)
+api_app = Blueprint('api_app', __name__)
 
-@app.route('/api/agendamentos',methods=['GET'])
+@api_app.route('/api/agendamentos',methods=['GET'])
 def list_all_schedule():
 	query = "SELECT s.id, st.status, t.type, r.name, r.email, r.phone, s.date_time, s.message "\
 			"FROM send_schedule AS s "\
@@ -16,7 +19,7 @@ def list_all_schedule():
 	response = db.select(query);
 	return response
 
-@app.route('/api/agendamentos/<select_id>',methods=['GET'])
+@api_app.route('/api/agendamentos/<select_id>',methods=['GET'])
 def select_schedule(select_id):
 	query = "SELECT s.id, st.status, t.type, r.name, r.email, r.phone, s.date_time, s.message "\
 			"FROM send_schedule AS s "\
@@ -27,7 +30,7 @@ def select_schedule(select_id):
 	response = db.select(query);
 	return response
 
-@app.route('/api/agendamentos',methods=['POST'])
+@api_app.route('/api/agendamentos',methods=['POST'])
 def insert_schedule():
 	output = "erro ao inserir, valores incorretos"
 	code = 400
@@ -59,7 +62,7 @@ def insert_schedule():
 
 	return output, code
 
-@app.route('/api/agendamentos/<delete_id>',methods=['DELETE'])
+@api_app.route('/api/agendamentos/<delete_id>',methods=['DELETE'])
 def delete_schedule(delete_id):
 	output = "erro ao deletar o agendamento"
 	code = 500
@@ -73,6 +76,3 @@ def delete_schedule(delete_id):
 	
 	return output, code
 
-
-if __name__ == '__main__':
-	app.run()

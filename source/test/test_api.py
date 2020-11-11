@@ -1,13 +1,14 @@
 
 import sys
-sys.path.append('../api')
-import api
+sys.path.append('..')
+import index
 import json
 from flask import Flask
 import db
 
+
 def client():
-	app = api.app
+	app = index.app
 	app.testing = True
 	return app.test_client()
 
