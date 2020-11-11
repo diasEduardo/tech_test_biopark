@@ -1,5 +1,6 @@
 import sys
 sys.path.append('../utils')
+sys.path.append('utils')
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from config_parser import config

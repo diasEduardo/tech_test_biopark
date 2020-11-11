@@ -31,7 +31,7 @@ Com base nisso foi desenvolvido o esquema para o banco de dados, que pode sem en
 
 # Funcionamento
 
-A aplicação se encontra hospedada em [ainda_nao_tem_site.com](/), ela conta com uma interface na forma de API assim como na forma de um site.
+A aplicação se encontra hospedada em [ainda_nao_tem_site.com](/), ela conta com uma interface na forma de API assim como na forma de um site. Quanto ao site ele apresenta uma interface grafica simples para melhor demonstrar o uso da API.
 
 
 ### API
