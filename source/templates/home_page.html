@@ -67,7 +67,10 @@
 			{% for schedule in send_schedule %}
 			  <li><div>
 			  	<p class='inline'>{{schedule['name']}}, {{schedule['type']}}</p>
-			  	 <button class='inline' type="button">delete</button> 
+			  	 <form class='inline' action="/delete" method="post">
+			  	 	<input class='inline' type="hidden" id="lid" name="lid" value="{{schedule['id']}}">
+			  	 	<input  class='inline' type="submit" value="Deletar">
+			  	 </form>
 			  	<p >{{schedule['date_time']}}</p>
 			  	<p>{{schedule['message']}}</p>
 			  </div></li>
@@ -85,14 +88,14 @@
 
 			<label for="lreceiver">destinatario</label><br />
 			<select id="lreceiver" name="lreceiver"><br />
-				<option value="None"></option>
+				<option value="0"></option>
 				{% for receiver in receivers %}
 				<option value="{{receiver['id']}}">{{receiver['name']}}</option>
 			    {% endfor %}
 			</select> <br />
 			<label for="ltype">tipo de envio</label><br />
 			<select id="ltype" name="ltype"><br />
-				<option value="None"></option>
+				<option value="0"></option>
 				{% for type in types %}
 				<option value="{{type['id']}}">{{type['type']}}</option>
 			    {% endfor %}
