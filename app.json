@@ -1,8 +1,0 @@
-{
-  "name": "Start on Heroku: Python",
-  "description": "biopark 2021 trainee",
-  "image": "heroku/python",
-  "repository": "https://github.com/diasEduardo/tech_test_biopark",
-  "keywords": ["python", "flask" ],
-  "addons": [ "heroku-postgresql" ]
-}
