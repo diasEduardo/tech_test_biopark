@@ -31,7 +31,7 @@ Com base nisso foi desenvolvido o esquema para o banco de dados, que pode sem en
 
 # Funcionamento
 
-A aplicação se encontra hospedada em [ainda_nao_tem_site.com](/), ela conta com uma interface na forma de API assim como na forma de um site. Quanto ao site ele apresenta uma interface grafica simples para melhor demonstrar o uso da API.
+A aplicação se encontra hospedada em [https://biopark.herokuapp.com/](https://biopark.herokuapp.com/), ela conta com uma interface na forma de API assim como na forma de um site. Quanto ao site ele apresenta uma interface grafica simples para melhor demonstrar o uso da API.
 
 
 ### API
@@ -64,3 +64,12 @@ Utilizando o verbo POST
 Para a **deleção** se utiliza o verbo DELETE 
 
 	DELETE /api/agendamentos/<id>
+	
+	
+# Execução local
+
+Caso tenha interesse em realizar a execução local o arquivo inicial se encontra em source/index.py
+	
+	python source/index.py
+	
+a execução supoe a presença de um banco de dados postgreSQL local e as informações de conexão se encontram em source/database/db.ini
